@@ -56,6 +56,7 @@ class _GooglePlaceAutoCompleteTextFieldState
       link: _layerLink,
       child: TextFormField(
         decoration: widget.inputDecoration,
+        textAlign: TextAlign.center,
         style: widget.textStyle,
         controller: widget.textEditingController,
         onChanged: (string) => (subject.add(string)),
