@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -80,10 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
             print("placeDetails" + prediction.lng.toString());
           },
           itmClick: (Prediction prediction) {
-            controller.text = prediction.description;
+            controller.text = prediction.description ?? "Search your location";
 
             controller.selection = TextSelection.fromPosition(
-                TextPosition(offset: prediction.description.length));
+                TextPosition(offset: prediction.description!.length));
           }
           // default 600 ms ,
           ),
