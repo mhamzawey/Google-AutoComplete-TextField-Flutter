@@ -16,6 +16,8 @@ class GooglePlaceAutoCompleteTextField extends StatefulWidget {
   ItemClick? itmClick;
   GetPlaceDetailswWithLatLng? getPlaceDetailWithLatLng;
   bool isLatLngRequired = true;
+  Prediction? prediction;
+  double? radius = 50;
 
   TextStyle textStyle;
   String googleAPIKey;
@@ -26,6 +28,8 @@ class GooglePlaceAutoCompleteTextField extends StatefulWidget {
   GooglePlaceAutoCompleteTextField({
     required this.textEditingController,
     required this.googleAPIKey,
+    this.radius,
+    this.prediction,
     this.debounceTime: 600,
     this.inputDecoration: const InputDecoration(),
     this.itmClick,
@@ -81,6 +85,11 @@ class _GooglePlaceAutoCompleteTextFieldState
           url = url + "|" + "country:" + country;
         }
       }
+    }
+    if (widget.prediction != null) {
+      String pred =
+          "location=${widget.prediction!.lat},${widget.prediction!.lng}&radius=${widget.radius}";
+      url = url + pred;
     }
 
     Response response = await dio.get(url);
