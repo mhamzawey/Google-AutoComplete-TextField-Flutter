@@ -71,11 +71,11 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: GooglePlaceAutoCompleteTextField(
           textEditingController: controller,
-          googleAPIKey: "YOUR_GOOGLE_API_KEY",
+          googleAPIKey: "YOUR_API_KEY",
           inputDecoration: InputDecoration(hintText: "Search your location"),
           debounceTime: 800,
-          countries: ["in", "fr"],
-          isLatLngRequired: true,
+          radius: 50,
+          prediction: new Prediction(lat: "30.050852226884867", lng: "31.237519121481814"),
           getPlaceDetailWithLatLng: (Prediction prediction) {
             print("placeDetails" + prediction.lng.toString());
           },

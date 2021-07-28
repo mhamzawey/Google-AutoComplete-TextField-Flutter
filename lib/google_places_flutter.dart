@@ -88,10 +88,9 @@ class _GooglePlaceAutoCompleteTextFieldState
     }
     if (widget.prediction != null) {
       String pred =
-          "location=${widget.prediction!.lat},${widget.prediction!.lng}&radius=${widget.radius}";
+          "&location=${widget.prediction!.lat},${widget.prediction!.lng}&radius=${widget.radius}";
       url = url + pred;
     }
-
     Response response = await dio.get(url);
     PlacesAutocompleteResponse subscriptionResponse =
         PlacesAutocompleteResponse.fromJson(response.data);
