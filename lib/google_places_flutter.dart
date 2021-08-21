@@ -18,6 +18,7 @@ class GooglePlaceAutoCompleteTextField extends StatefulWidget {
   bool isLatLngRequired = true;
   Prediction? prediction;
   double? radius = 50;
+  FocusNode? focusNode;
 
   TextStyle textStyle;
   String googleAPIKey;
@@ -59,6 +60,7 @@ class _GooglePlaceAutoCompleteTextFieldState
     return CompositedTransformTarget(
       link: _layerLink,
       child: TextFormField(
+        focusNode: widget.focusNode,
         decoration: widget.inputDecoration,
         textAlign: TextAlign.left,
         style: widget.textStyle,
